@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "Youtube to Spotify",
+    "description": "Quickly play YouTube songs on Spotify",
+    "version": "0.1",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icons/spotify.png"
+    },
+    "permissions": ["scripting", "activeTab", "storage", "contextMenus", "tabs"],
+    "host_permissions": [
+        "*://*.youtube.com/*"
+    ],
+    "background": {
+        "service_worker": "src/contextMenu.js"
+    },
+    "content_scripts": [
+        {
+            "js": ["src/shared.js", "src/callback.js"],
+            "matches": [
+                "https://www.youtube.com/yt2spotify-callback"
+            ]
+        },
+        {
+            "js": ["src/shared.js", "src/buttons.js"],
+            "matches": [
+                "https://www.youtube.com/watch*"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/spotify-16.png",
+        "48": "icons/spotify-48.png",
+        "128": "icons/spotify-128.png"
+    }
+}
