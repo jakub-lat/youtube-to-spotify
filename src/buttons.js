@@ -14,6 +14,8 @@ const buttonTemplate = (id, text) => `
 </button>
 `;
 
+const isPlaying = () => document.querySelector('.html5-video-player').classList.contains('playing-mode');
+const togglePlayMode = () => document.querySelector('button.ytp-play-button.ytp-button').click();
 
 function elementFromHTML(html) {
     const temp = document.createElement('template');
@@ -51,7 +53,7 @@ async function waitForElement(selector) {
 
         window.open(song.uri);
 //        play(song);
-        document.querySelector('button.ytp-play-button.ytp-button').click();
+        if(isPlaying()) togglePlayMode();
     });
 
     queueButton.addEventListener('click', async () => {
@@ -59,6 +61,6 @@ async function waitForElement(selector) {
         if(!song) return;
 
         await addToQueue(song.uri);
-        document.querySelector('button.ytp-play-button.ytp-button').click();
+        if(isPlaying()) togglePlayMode();
     });
 })();
