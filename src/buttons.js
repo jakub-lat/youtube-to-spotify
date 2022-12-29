@@ -32,7 +32,11 @@ async function waitForElement(selector) {
 
 
 (async () => {
-    await getToken();
+    try {
+        await getSong(document.title);
+    } catch {
+        window.open(LOGIN_URI);
+    }
 
     const playButton = elementFromHTML(buttonTemplate('spotifyPlay', 'Play'));
     const queueButton = elementFromHTML(buttonTemplate('spotifyAddToQueue', 'Add to queue'));
@@ -55,5 +59,6 @@ async function waitForElement(selector) {
         if(!song) return;
 
         await addToQueue(song.uri);
+        document.querySelector('button.ytp-play-button.ytp-button').click();
     });
 })();

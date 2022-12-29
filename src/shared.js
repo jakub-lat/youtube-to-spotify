@@ -1,3 +1,8 @@
+const CLIENT_ID = '1eb931b0ef6e4869b9b63838dafa8081';
+const REDIRECT_URI = 'https://www.youtube.com/yt2spotify-callback';
+const LOGIN_URI = `https://accounts.spotify.com/authorize?response_type=token&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=user-modify-playback-state`;
+
+
 const log = (...args) => console.log('[yt2spotify]', ...args);
 const sleep = (t) => new Promise((r) => setTimeout(r, t));
 

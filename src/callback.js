@@ -26,5 +26,6 @@
 
 
     document.body.innerHTML += '<h2>Login success</h2><p>You can close this tab.</p>';
+    window.close();
 })();
 

@@ -1,10 +1,8 @@
-const CLIENT_ID = '1eb931b0ef6e4869b9b63838dafa8081';
-const REDIRECT_URI = 'https://www.youtube.com/yt2spotify-callback';
 
 (async () => {
     const { spotifyToken } = await chrome.storage.local.get(["spotifyToken"]);
     loginStatus.style.visibility = 'visible';
-    login.href = `https://accounts.spotify.com/authorize?response_type=token&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=user-modify-playback-state`;
+    login.href = LOGIN_URI;
 
     logout.addEventListener('click', async () => {
         await chrome.storage.local.set({ spotifyToken: null });
